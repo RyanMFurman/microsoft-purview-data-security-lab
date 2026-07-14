@@ -153,3 +153,14 @@
 - **Operational risk / limitation:** The risk is unverified because the lab has no tenant telemetry.
 - **Mitigation:** State evidence status explicitly and require owner-approved access reviews and baseline metrics before pilot expansion.
 - **Interview takeaway:** I translated an unverified technical risk into an evidence-gated executive priority without presenting it as a production finding.
+
+## DEC-015 — Use evidence-level framework mapping without maturity scoring
+
+- **Decision:** Limit Phase 11 to selected evidence-level mappings between project artifacts, NIST CSF 2.0 outcomes, and ISO/IEC 27001/27002 control concepts.
+- **Options considered:** M1 evidence-level mapping; M2 fictional maturity scoring; M3 full compliance matrix.
+- **Selected option:** M1 — Evidence-level mapping.
+- **Reason:** The lab contains useful local execution, control designs, and simulated investigation evidence, but no live organizational data or operating-effectiveness history.
+- **Security benefit:** Makes evidence gaps visible and directs future validation toward live configuration, access, telemetry, ownership, and effectiveness records.
+- **Operational risk / limitation:** The selective crosswalk cannot establish certification, compliance, or enterprise control maturity.
+- **Mitigation:** State limitations per mapping row and require organizational, legal, risk, control-owner, and independent validation.
+- **Interview takeaway:** I used frameworks to organize defensible evidence without turning a portfolio lab into an unsupported compliance claim.
