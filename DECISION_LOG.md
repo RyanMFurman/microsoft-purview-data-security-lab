@@ -164,3 +164,14 @@
 - **Operational risk / limitation:** The selective crosswalk cannot establish certification, compliance, or enterprise control maturity.
 - **Mitigation:** State limitations per mapping row and require organizational, legal, risk, control-owner, and independent validation.
 - **Interview takeaway:** I used frameworks to organize defensible evidence without turning a portfolio lab into an unsupported compliance claim.
+
+## DEC-016 — Use a recruiter-first portfolio presentation
+
+- **Decision:** Lead the final portfolio with outcomes, architecture, evidence, security designs, reporting, and limitations before detailed source code.
+- **Options considered:** H1 recruiter-first; H2 technical-first; H3 compliance-first.
+- **Selected option:** H1 — Recruiter-first.
+- **Reason:** Recruiters and hiring managers can understand the business value and evidence boundary quickly while technical artifacts remain directly linked.
+- **Security benefit:** Prominent evidence boundaries reduce the risk of local results or simulations being mistaken for tenant deployment.
+- **Operational risk / limitation:** Deep implementation detail is one level below the landing page.
+- **Mitigation:** Link every headline result to validation, policy, investigation, reporting, or interview artifacts.
+- **Interview takeaway:** I tailored the communication sequence to the audience without hiding technical depth or overstating evidence.

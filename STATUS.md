@@ -14,7 +14,7 @@
 - Phase 9 — DSPM for AI and Copilot readiness: **Complete (2026-07-14)**
 - Phase 10 — Executive and technical reporting: **Complete (2026-07-14)**
 - Phase 11 — NIST and ISO mapping: **Complete (2026-07-14)**
-- Phase 12 — Portfolio polish and interview preparation: **Not started**
+- Phase 12 — Portfolio polish and interview preparation: **Complete (2026-07-14)**
 - Tenant changes: **None**
 - Connections to Microsoft cloud services: **None**
 - Evidence model: Free hybrid lab
@@ -95,6 +95,11 @@
 - [x] Phase 11 evidence-mapping decision recorded
 - [x] Phase 11 knowledge check completed
 - [x] User confirmed Phase 11 with `done`
+- [x] Phase 12 recruiter-first presentation decision recorded
+- [x] Phase 12 required local evidence captures reviewed and accepted
+- [x] Phase 12 knowledge check completed through coached model answers
+- [x] User confirmed Phase 12 with `done`
+- [x] Final local validation passed: 14 cases, 7 tests, 12 configuration checks
 
 ## Timeboxed delivery priority
 
