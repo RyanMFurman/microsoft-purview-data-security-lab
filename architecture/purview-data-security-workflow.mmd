@@ -1,0 +1,70 @@
+flowchart LR
+    subgraph People["Personas"]
+        Employee["Standard Employee"]
+        Owner["Data Owner"]
+        Analyst["Data Security Analyst"]
+        Admin["Compliance Administrator"]
+        Exec["Executive Stakeholder"]
+        External["External Recipient"]
+    end
+
+    subgraph Identity["Identity and access boundary"]
+        Entra["Microsoft Entra ID\nusers, groups, roles, access"]
+    end
+
+    subgraph M365["Microsoft 365 data boundary — DESIGNED FOR PURVIEW"]
+        EXO["Exchange Online"]
+        Teams["Microsoft Teams"]
+        SPO["SharePoint Online"]
+        ODB["OneDrive"]
+        Copilot["Microsoft 365 Copilot\ninherits user access"]
+    end
+
+    subgraph Purview["Microsoft Purview control plane — DESIGNED FOR PURVIEW"]
+        Classify["Classifiers and\nsensitivity labels"]
+        DLP["DLP policies"]
+        Lifecycle["Lifecycle and retention"]
+        Signals["Audit, alerts, activity"]
+        Risk["Insider Risk, Communication\nCompliance, DSPM"]
+    end
+
+    subgraph Local["Local evidence boundary"]
+        Synthetic["Synthetic datasets\nIMPLEMENTED LOCALLY"]
+        Automation["Python analysis and PowerShell\nvalidation — IMPLEMENTED LOCALLY"]
+        Cases["Fictional events and evidence\nSIMULATED INVESTIGATION"]
+        Reports["Technical and executive reports"]
+    end
+
+    Employee --> Entra
+    Owner --> Entra
+    Admin --> Entra
+    Analyst --> Entra
+    Entra --> EXO
+    Entra --> Teams
+    Entra --> SPO
+    Entra --> ODB
+    EXO --> Classify
+    Teams --> Classify
+    SPO --> Classify
+    ODB --> Classify
+    Classify --> DLP
+    Classify --> Lifecycle
+    DLP --> Signals
+    Signals --> Risk
+    Entra --> Copilot
+    SPO --> Copilot
+    ODB --> Copilot
+    Teams --> Copilot
+    EXO --> Copilot
+    DLP -. "external sharing decision" .-> External
+    Signals --> Analyst
+    Analyst --> Reports
+    Reports --> Exec
+    Owner --> Reports
+    Synthetic --> Automation
+    Cases --> Automation
+    Automation --> Reports
+    Admin --> Classify
+    Admin --> DLP
+    Admin --> Lifecycle
+

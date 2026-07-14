@@ -1,0 +1,29 @@
+# Credentials, secrets, and local environment files
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.cer
+secrets/
+
+# Sanitized exports and generated sensitive-looking test output
+exports/
+output/
+reports/generated/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# PowerShell local artifacts
+*.clixml
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
