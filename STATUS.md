@@ -8,7 +8,8 @@
 - Phase 3 — Classification taxonomy: **Complete (2026-07-14)**
 - Phase 4 — Sensitivity labels and publishing: **Complete (2026-07-14)**
 - Phase 5 — Data Loss Prevention: **Complete (2026-07-14)**
-- Phase 6 — Data discovery and forensic investigation: **Not started**
+- Phase 6 — Data discovery and forensic investigation: **Complete (2026-07-14)**
+- Phase 7 — PowerShell and Python automation: **Not started**
 - Tenant changes: **None**
 - Connections to Microsoft cloud services: **None**
 - Evidence model: Free hybrid lab
@@ -67,6 +68,9 @@
 - [x] Phase 5 enforcement decision recorded
 - [x] Phase 5 knowledge check completed
 - [x] User confirmed Phase 5 with `done`
+- [x] Phase 6 severity decision recorded
+- [x] Phase 6 knowledge check completed
+- [x] User confirmed Phase 6 with `done`
 
 ## Timeboxed delivery priority
 

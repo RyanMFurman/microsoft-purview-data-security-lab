@@ -98,3 +98,14 @@
 - **Operational risk / limitation:** Users might misuse overrides or normalize warning bypass.
 - **Mitigation:** Alert on each high-confidence override, review justification, track repeated behavior, prohibit broad domain exceptions, and move proven scenarios to no-override blocking.
 - **Interview takeaway:** I used progressive enforcement to balance PHI protection, business continuity, and evidence-driven tuning.
+
+## DEC-010 — Assign Medium severity to the prevented PHI-sharing attempt
+
+- **Decision:** Assign Medium incident severity while retaining Highly Confidential – PHI data sensitivity.
+- **Options considered:** S1 Medium; S2 High.
+- **Selected option:** S1 — Medium.
+- **Reason:** The simulated DLP control blocked the action, no override was used, and no external permission, link, access, or download was demonstrated.
+- **Security benefit:** Preserves a meaningful response to attempted PHI disclosure while reserving High/Critical escalation for stronger exposure or impact evidence.
+- **Operational risk / limitation:** Incomplete telemetry could conceal access or related behavior.
+- **Mitigation:** Document evidence coverage, search permissions and access sources, and escalate if a link, override, external access, scale, repetition, or malicious intent is found.
+- **Interview takeaway:** I scored data sensitivity separately from incident severity and stated evidence limitations rather than making an unsupported breach conclusion.
