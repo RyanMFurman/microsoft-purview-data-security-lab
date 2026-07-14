@@ -43,3 +43,14 @@
 - **Operational risk / limitation:** Employee PII and financial information receive narrower initial treatment.
 - **Mitigation:** Include those classes in the four-level taxonomy and roadmap without diluting the primary PHI implementation.
 - **Interview takeaway:** I prioritized the highest-impact data and reduced tuning complexity before broadening classification coverage.
+
+## DEC-005 — Treat a standalone MRN pattern as review, not automatically high risk
+
+- **Decision:** Require identity or clinical context before assigning a high-risk result to an MRN-pattern match.
+- **Options considered:** Send a standalone MRN match for review; classify every standalone MRN match as high risk.
+- **Selected option:** Review a standalone MRN match.
+- **Reason:** Pattern detection identifies potential evidence, but accurate risk determination requires context showing that the value represents a patient record rather than a campaign, ticket, training, or example code.
+- **Security benefit:** Preserves visibility into possible PHI while using corroborating evidence to prioritize the strongest exposure risks.
+- **Operational risk / limitation:** A genuine isolated MRN might initially receive medium severity rather than high severity.
+- **Mitigation:** Retain the event for review, combine it with identity and clinical indicators, and monitor false-negative test cases before changing the threshold.
+- **Interview takeaway:** I separated technical detection from contextual risk determination instead of treating every pattern match as a confirmed incident.
