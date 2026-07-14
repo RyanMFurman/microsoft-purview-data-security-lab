@@ -109,3 +109,14 @@
 - **Operational risk / limitation:** Incomplete telemetry could conceal access or related behavior.
 - **Mitigation:** Document evidence coverage, search permissions and access sources, and escalate if a link, override, external access, scale, repetition, or malicious intent is found.
 - **Interview takeaway:** I scored data sensitivity separately from incident severity and stated evidence limitations rather than making an unsupported breach conclusion.
+
+## DEC-011 — Require three corroborating categories for automated High
+
+- **Decision:** Require MRN, identity context, and clinical context before the local detector assigns automated High.
+- **Options considered:** T1 require all three categories; T2 require MRN plus either identity or clinical context.
+- **Selected option:** T1 — MRN plus identity plus clinical context.
+- **Reason:** Automated High is defined by the combination of patient-record, identity, and clinical evidence; partial combinations should remain visible for review.
+- **Security benefit:** Reduces false-positive automatic blocking while preserving ambiguous matches for analyst evaluation.
+- **Operational risk / limitation:** Genuine patient records with incomplete fields might not receive automated High.
+- **Mitigation:** Route partial combinations to Review, retain evidence, test false negatives, and allow contextual human classification.
+- **Interview takeaway:** I encoded a conservative, explainable threshold and tested boundary behavior instead of treating every pattern match as confirmed PHI.
