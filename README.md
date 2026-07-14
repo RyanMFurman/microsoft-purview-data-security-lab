@@ -1,5 +1,17 @@
 # Microsoft Purview Healthcare Data Security & AI Governance Lab
 
+[![Microsoft Purview](https://img.shields.io/badge/Microsoft-Purview-5C2D91?logo=microsoft&logoColor=white)](https://learn.microsoft.com/en-us/purview/)
+[![Python Tests](https://img.shields.io/badge/Python%20tests-7%2F7%20passing-2E8B57?logo=python&logoColor=white)](automation/validation-results.md)
+[![PowerShell Checks](https://img.shields.io/badge/PowerShell%20checks-12%2F12%20passing-2671BE?logo=powershell&logoColor=white)](automation/validation-results.md)
+[![Data](https://img.shields.io/badge/data-100%25%20synthetic-blue)](data/test-data-guide.md)
+[![Tenant Deployment](https://img.shields.io/badge/live%20tenant-not%20used-lightgrey)](#honest-limitation)
+
+> **A recruiter-ready security portfolio:** healthcare data protection, Microsoft Purview policy design, working automation, forensic investigation, and Microsoft 365 Copilot readiness.
+
+### Quick links
+
+[Results](#results-i-personally-validated) · [Architecture](#how-the-solution-fits-together) · [Evidence](#local-automation-evidence) · [Security decisions](#important-project-decisions) · [Technical work](#explore-the-technical-work) · [Interview preparation](#interview-preparation)
+
 ## What this project is
 
 This is a hands-on portfolio project showing how I would help a healthcare technology company protect sensitive information in Microsoft 365 and prepare safely for Microsoft 365 Copilot.
@@ -29,6 +41,14 @@ A fictional company stores patient-support, employee, financial, and business in
 - A Copilot-readiness and AI data-governance plan
 - An executive summary, remediation plan, and 30/60/90-day roadmap
 - A limited NIST and ISO control mapping
+
+## Project at a glance
+
+| Discover | Protect | Investigate | Prepare for AI |
+|---|---|---|---|
+| Identify sensitive information | Apply labels and DLP rules | Determine whether exposure occurred | Review access before Copilot |
+| Test true and false matches | Reduce inappropriate sharing | Preserve and evaluate evidence | Govern sensitive AI data |
+| **Python analysis** | **Purview policy designs** | **Simulated forensic case** | **Copilot readiness plan** |
 
 ## Results I personally validated
 
@@ -79,6 +99,14 @@ The important Copilot lesson is simple: Copilot can use information that a perso
 The Python tool is a demonstration detector. It is not a replacement for Microsoft Purview's classification technology.
 
 ## What was implemented and what was designed
+
+The repository uses three visible evidence labels so a reviewer always knows what is real, designed, or fictional.
+
+| Evidence label | Plain-English meaning |
+|---|---|
+| **IMPLEMENTED LOCALLY** | I personally ran and validated it on my computer |
+| **DESIGNED FOR PURVIEW** | I documented how it should be configured, but did not deploy it |
+| **SIMULATED INVESTIGATION** | I used a fictional event to demonstrate the investigation workflow |
 
 ### Implemented locally
 
@@ -149,6 +177,18 @@ Instead, I personally built and tested the parts that could be completed safely 
 - [30-second, 2-minute, 5-minute, and 10-minute walkthroughs](interview/project-walkthrough.md)
 - [Technical interview questions](interview/technical-questions.md)
 - [Honest experience and limitation statement](interview/honest-limitations.md)
+
+## More visual evidence
+
+| Strong PHI test | Boundary test |
+|---|---|
+| ![Strong synthetic PHI test case](screenshots/phase-2-phi-tp-001.png) | ![Synthetic boundary test case](screenshots/phase-2-phi-bd-001.png) |
+
+| False-positive test | Public negative control |
+|---|---|
+| ![Synthetic false-positive test case](screenshots/phase-2-phi-fp-001.png) | ![Synthetic public negative control](screenshots/phase-2-phi-tn-001.png) |
+
+These images are deliberately small record excerpts. They demonstrate test-case design—not Microsoft Purview alerts.
 
 ## My interview summary
 
