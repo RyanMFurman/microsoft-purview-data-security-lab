@@ -11,7 +11,8 @@
 - Phase 6 — Data discovery and forensic investigation: **Complete (2026-07-14)**
 - Phase 7 — PowerShell and Python automation: **Complete (2026-07-14)**
 - Phase 8 — Data lifecycle management: **Complete (2026-07-14)**
-- Phase 9 — DSPM for AI and Copilot readiness: **Not started**
+- Phase 9 — DSPM for AI and Copilot readiness: **Complete (2026-07-14)**
+- Phase 10 — Executive and technical reporting: **Not started**
 - Tenant changes: **None**
 - Connections to Microsoft cloud services: **None**
 - Evidence model: Free hybrid lab
@@ -83,6 +84,9 @@
 - [x] Phase 8 AI-evaluation retention decision recorded
 - [x] Phase 8 knowledge check completed
 - [x] User confirmed Phase 8 with `done`
+- [x] Phase 9 pilot-gate decision recorded
+- [x] Phase 9 knowledge check completed
+- [x] User confirmed Phase 9 with `done`
 
 ## Timeboxed delivery priority
 
@@ -90,3 +94,4 @@
 - Phase 8 lifecycle: concise practical table and decision summary.
 - Phase 11 NIST/ISO: concise illustrative appendix only.
 - Avoid duplicate prose; prioritize working automation, policy logic, test cases, investigation reasoning, and interview fluency.
+- Phase 12 must perform a final evidence audit and give the user an explicit capture checklist for every missing required screenshot or proof artifact.

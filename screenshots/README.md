@@ -44,3 +44,7 @@ All files below are **IMPLEMENTED LOCALLY** and were supplied after the user exe
 | `phase-2-phi-tn-001.png` | A public negative control contains no patient identifier or clinical record | A live DLP nonmatch |
 
 The screenshots use the neutral `PS PURVIEW-LAB>` prompt and contain no tenant identifiers or production telemetry.
+
+## Final evidence-audit requirement
+
+Phase 12 must inventory completed and missing evidence across every phase. Any capture that cannot be produced automatically must be presented to the user as an exact command/view, expected result, evidence label, filename, and redaction checklist before the portfolio is declared recruiter-ready.

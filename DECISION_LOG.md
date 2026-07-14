@@ -131,3 +131,14 @@
 - **Operational risk / limitation:** Less time is available for retrospective analysis.
 - **Mitigation:** Preserve approved de-identified aggregate metrics and methodology longer; require documented exceptions or holds for raw-data extensions.
 - **Interview takeaway:** I tied retention to purpose and minimized raw AI evaluation data instead of retaining it indefinitely.
+
+## DEC-013 — Require owner-approved permission reviews before Copilot pilot access
+
+- **Decision:** Gate Copilot pilot access on completed, owner-approved permission reviews for users and repositories.
+- **Options considered:** G1 permission review before access; G2 broad launch followed by remediation.
+- **Selected option:** G1 — Permission review before access.
+- **Reason:** Copilot can make already-accessible SharePoint and OneDrive content easier to locate and synthesize, amplifying broad or stale permissions.
+- **Security benefit:** Reduces inherited-access exposure before AI use begins.
+- **Operational risk / limitation:** Slows pilot onboarding and requires owner participation.
+- **Mitigation:** Limit the first pilot to five users and reviewed repositories, use a standard access-review checklist, and timebox owner approval.
+- **Interview takeaway:** I treated Copilot readiness as an access-governance program rather than a license deployment.
