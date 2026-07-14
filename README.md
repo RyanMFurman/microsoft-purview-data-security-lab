@@ -30,7 +30,7 @@ All names, records, identifiers, organizations, and events in this repository ar
 
 ## Current status
 
-Phases 0 through 9 are complete. Phase 10 has not started. See [STATUS.md](STATUS.md).
+Phases 0 through 10 are complete. Phase 11 has not started. See [STATUS.md](STATUS.md).
 
 ## Authoritative technical references
 

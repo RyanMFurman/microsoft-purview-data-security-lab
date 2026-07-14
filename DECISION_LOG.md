@@ -142,3 +142,14 @@
 - **Operational risk / limitation:** Slows pilot onboarding and requires owner participation.
 - **Mitigation:** Limit the first pilot to five users and reviewed repositories, use a standard access-review checklist, and timebox owner approval.
 - **Interview takeaway:** I treated Copilot readiness as an access-governance program rather than a license deployment.
+
+## DEC-014 — Lead executive reporting with unreviewed patient-data access before Copilot
+
+- **Decision:** Use unreviewed SharePoint/OneDrive access before Copilot as the executive headline risk.
+- **Options considered:** X1 unreviewed access before Copilot; X2 external PHI sharing; X3 lack of live Purview capability.
+- **Selected option:** X1 — Unreviewed access before Copilot.
+- **Reason:** It connects patient-data protection, IAM, collaboration repositories, Purview controls, and AI readiness without claiming that excessive access was observed.
+- **Security benefit:** Prioritizes permission remediation before AI can accelerate discovery of already-accessible content.
+- **Operational risk / limitation:** The risk is unverified because the lab has no tenant telemetry.
+- **Mitigation:** State evidence status explicitly and require owner-approved access reviews and baseline metrics before pilot expansion.
+- **Interview takeaway:** I translated an unverified technical risk into an evidence-gated executive priority without presenting it as a production finding.

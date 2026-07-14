@@ -12,7 +12,8 @@
 - Phase 7 — PowerShell and Python automation: **Complete (2026-07-14)**
 - Phase 8 — Data lifecycle management: **Complete (2026-07-14)**
 - Phase 9 — DSPM for AI and Copilot readiness: **Complete (2026-07-14)**
-- Phase 10 — Executive and technical reporting: **Not started**
+- Phase 10 — Executive and technical reporting: **Complete (2026-07-14)**
+- Phase 11 — NIST and ISO mapping: **Not started**
 - Tenant changes: **None**
 - Connections to Microsoft cloud services: **None**
 - Evidence model: Free hybrid lab
@@ -87,6 +88,9 @@
 - [x] Phase 9 pilot-gate decision recorded
 - [x] Phase 9 knowledge check completed
 - [x] User confirmed Phase 9 with `done`
+- [x] Phase 10 headline-risk decision recorded
+- [x] Phase 10 knowledge check completed
+- [x] User confirmed Phase 10 with `done`
 
 ## Timeboxed delivery priority
 
