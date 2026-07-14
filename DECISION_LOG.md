@@ -54,3 +54,14 @@
 - **Operational risk / limitation:** A genuine isolated MRN might initially receive medium severity rather than high severity.
 - **Mitigation:** Retain the event for review, combine it with identity and clinical indicators, and monitor false-negative test cases before changing the threshold.
 - **Interview takeaway:** I separated technical detection from contextual risk determination instead of treating every pattern match as a confirmed incident.
+
+## DEC-006 — Classify confirmed patient-linked identity plus MRN as Highly Confidential – PHI
+
+- **Decision:** Classify `PHI-BD-001` as Highly Confidential – PHI after review confirms that its MRN belongs to a patient record.
+- **Options considered:** Highly Confidential – PHI; Confidential.
+- **Selected option:** Highly Confidential – PHI.
+- **Reason:** Confirmed patient-linked identity and an MRN require the strongest business handling even without diagnosis, medication, or treatment information.
+- **Security benefit:** Reduces the chance that administrative patient records receive weaker sharing and access controls.
+- **Operational risk / limitation:** Administrative records may receive higher-friction handling.
+- **Mitigation:** Require contextual confirmation so MRN-shaped campaign, ticket, training, and example codes are not automatically treated as patient records.
+- **Interview takeaway:** Detector confidence can remain “review” while the final, context-informed business classification becomes Highly Confidential – PHI.
