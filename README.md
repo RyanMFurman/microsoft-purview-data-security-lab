@@ -1,160 +1,167 @@
 # Microsoft Purview Healthcare Data Security & AI Governance Lab
 
-> A recruiter-ready hybrid lab demonstrating local security automation, Microsoft Purview policy engineering, healthcare DLP test design, simulated forensic investigation, and Microsoft 365 Copilot readiness.
+## What this project is
 
-[![Evidence: synthetic only](https://img.shields.io/badge/evidence-synthetic%20only-blue)](#evidence-model) [![Tenant deployment: none](https://img.shields.io/badge/tenant%20deployment-none-lightgrey)](#honest-limitations) [![Local tests: 7 passing](https://img.shields.io/badge/local%20tests-7%20passing-brightgreen)](automation/validation-results.md)
+This is a hands-on portfolio project showing how I would help a healthcare technology company protect sensitive information in Microsoft 365 and prepare safely for Microsoft 365 Copilot.
 
-## Executive overview
+The company and all records in this project are fictional. I used synthetic test data only.
 
-Contoso Care Assist is a fictional healthcare-technology company preparing for Microsoft 365 Copilot. This project defines how it would classify patient-linked information, protect external sharing, investigate potential exposure, govern retention, review inherited access, and report risk.
+## The business problem
 
-The lab produced working local automation against 14 synthetic test cases, including strong positives, boundary cases, false-positive candidates, and negative controls. It also produced deployable Purview specifications and a clearly fictional investigation. No Microsoft 365 tenant was available, so no tenant configuration or telemetry is claimed.
+A fictional company stores patient-support, employee, financial, and business information in Microsoft 365. Before introducing Copilot, it needs to answer five questions:
 
-## Demonstrated results
+1. Where is sensitive information stored?
+2. How should that information be labeled and protected?
+3. How can inappropriate external sharing be prevented?
+4. How should a possible exposure be investigated?
+5. Are existing permissions safe enough for Copilot?
 
-| Result | Evidence | Boundary |
-|---|---|---|
-| 14 synthetic cases analyzed | **IMPLEMENTED LOCALLY** | Demonstration detector, not Purview classification |
-| 7 Python unit tests passed | **IMPLEMENTED LOCALLY** | Validates local logic only |
-| 12 PowerShell configuration checks passed, 0 failed | **IMPLEMENTED LOCALLY** | Sanitized sample export, not a tenant export |
-| Four-level taxonomy and PHI-only encryption design | **DESIGNED FOR PURVIEW** | Not published or enforced |
-| SharePoint/OneDrive external-sharing DLP policy and 12-case matrix | **DESIGNED FOR PURVIEW** | Not run in Purview simulation mode |
-| External PHI-sharing forensic workflow | **SIMULATED INVESTIGATION** | No real user, event, alert, or exposure |
-| Copilot access-review gate and AI governance plan | **DESIGNED FOR PURVIEW** | No Copilot or DSPM telemetry |
+## What I built
 
-## Evidence model
+- A simple classification system from Public to Highly Confidential – PHI
+- A Microsoft Purview sensitivity-label design
+- A healthcare DLP policy for SharePoint and OneDrive
+- A test plan covering correct matches, difficult cases, false positives, and safe public data
+- A fictional investigation of a possible external PHI-sharing event
+- Python automation that reviews synthetic records and suggests risk levels
+- PowerShell automation that checks a sanitized sample Purview configuration
+- A data-retention plan
+- A Copilot-readiness and AI data-governance plan
+- An executive summary, remediation plan, and 30/60/90-day roadmap
+- A limited NIST and ISO control mapping
 
-- **IMPLEMENTED LOCALLY** — code or workflows personally executed and validated using synthetic data or sanitized configuration samples.
-- **DESIGNED FOR PURVIEW** — technically detailed Microsoft Purview configuration that was not deployed.
-- **SIMULATED INVESTIGATION** — fictional evidence and events used to demonstrate analyst reasoning.
+## Results I personally validated
 
-Every major artifact states its evidence boundary. A design is never presented as deployment evidence.
+| Result | Outcome |
+|---|---:|
+| Synthetic records analyzed | 14 |
+| Python tests passed | 7 of 7 |
+| PowerShell configuration checks passed | 12 of 12 |
+| Failed configuration checks | 0 |
 
-## Architecture and data flow
+These results prove that my local code and test logic worked. They do not prove that Microsoft Purview policies were deployed in a live company environment.
+
+## A quick example
+
+The test data includes:
+
+- A strong PHI example containing a fictional patient identity, medical-record number, and medical context
+- A boundary case that needs human review
+- A false-positive example where an MRN-like value is only a fictional marketing code
+- A public-data example that should not trigger protection
+
+This matters because a useful security system must detect real risk without blocking ordinary work unnecessarily.
+
+| Test-case coverage | Safety validation |
+|---|---|
+| ![Synthetic test-case coverage](screenshots/phase-2-case-coverage.png) | ![Synthetic-data safety validation](screenshots/phase-2-safety-validation.png) |
+
+## How the solution fits together
 
 ```mermaid
 flowchart LR
-    User["Employee or data owner"] --> Identity["Microsoft Entra ID access"]
-    Identity --> M365["Exchange, Teams, SharePoint, OneDrive"]
-    M365 --> Controls["Purview labels, DLP, retention — designed"]
-    M365 --> Copilot["Microsoft 365 Copilot inherits access"]
-    Controls --> Signals["Alerts, audit, investigations — production requirement"]
-    Synthetic["Synthetic data"] --> Local["Python analysis and PowerShell validation"]
-    Local --> Reports["Technical and executive reports"]
-    Signals -. "not available in this lab" .-> Reports
+    People["Employees and data owners"] --> M365["Microsoft 365 files and messages"]
+    M365 --> Protect["Purview labels, DLP, and retention"]
+    M365 --> Copilot["Microsoft 365 Copilot"]
+    Protect --> Review["Alerts and investigations"]
+    TestData["Synthetic test data"] --> Automation["Local Python and PowerShell checks"]
+    Automation --> Reports["Technical and executive reports"]
 ```
 
-See the full [architecture overview](architecture/architecture-overview.md) and [Mermaid source](architecture/purview-data-security-workflow.mmd).
+The important Copilot lesson is simple: Copilot can use information that a person already has permission to access. It does not repair overly broad permissions. That is why this project recommends owner-approved access reviews before a Copilot pilot.
 
-## Security design
+## Local automation evidence
 
-### Classification and information protection
-
-The [classification taxonomy](policies/classification-taxonomy.md) defines Public, Internal, Confidential, and Highly Confidential – PHI. The [sensitivity-label design](policies/sensitivity-label-design.md) encrypts only the PHI label initially, while the [publishing plan](policies/label-publishing-plan.md) uses a small role-diverse pilot.
-
-### Data Loss Prevention
-
-The [Healthcare Sensitive Data External Sharing Policy](policies/dlp-policy-design.md) starts in simulation, covers SharePoint and OneDrive, and progresses to block with business-justified override only after tuning. Its [test matrix](policies/dlp-test-matrix.md) separates a technical match from context, risk, exposure, and final analyst disposition.
-
-### Investigation and response
-
-The [investigation playbook](investigations/investigation-playbook.md) requires evidence of access or sharing before declaring exposure. The [fictional case](investigations/external-phi-sharing-case.md) demonstrates intake, scope, evidence preservation, severity, containment, root cause, and remediation without inventing tenant telemetry.
-
-### Lifecycle and AI readiness
-
-The [lifecycle plan](policies/data-lifecycle-plan.md) distinguishes retention, deletion, legal hold, and disposition review. The [AI governance plan](policies/ai-data-governance-plan.md) gates Copilot pilot access on owner-approved permission reviews because Copilot can surface content a user can already access; it does not repair oversharing.
-
-## Local automation
-
-The [automation guide](automation/README.md) documents execution, error handling, sanitization, and future guarded read-only use.
-
-```powershell
-python .\automation\Analyze-SensitiveData.py --sharing-state external
-python -m unittest discover -s .\automation\tests -v
-powershell -NoProfile -ExecutionPolicy Bypass -File .\automation\Export-PurviewConfiguration.ps1 -Mode Sample
-powershell -NoProfile -ExecutionPolicy Bypass -File .\automation\Test-PurviewConfiguration.ps1
-```
-
-Validated outputs are recorded in [validation-results.md](automation/validation-results.md). Generated reports are intentionally ignored by Git.
-
-## Evidence gallery
-
-All displayed records are synthetic and use reserved `example.test` addresses.
-
-| Case coverage | Safety validation |
+| Python analysis | PowerShell validation |
 |---|---|
-| ![Synthetic case coverage](screenshots/phase-2-case-coverage.png) | ![Synthetic-data safety validation](screenshots/phase-2-safety-validation.png) |
+| ![Python analysis of 14 synthetic cases](screenshots/phase-7-python-analysis.png) | ![PowerShell validation showing 12 passes and 0 failures](screenshots/phase-7-powershell-validation.png) |
 
-| Python analysis | PowerShell configuration validation |
-|---|---|
-| ![Python analysis of 14 synthetic cases](screenshots/phase-7-python-analysis.png) | ![PowerShell validation with 12 passes and 0 failures](screenshots/phase-7-powershell-validation.png) |
+The Python tool is a demonstration detector. It is not a replacement for Microsoft Purview's classification technology.
 
-The [evidence register and final capture checklist](screenshots/README.md) states what each image proves and what remains missing.
+## What was implemented and what was designed
 
-## Reporting and governance
+### Implemented locally
+
+- Synthetic healthcare and employee test data
+- Python analysis and risk summaries
+- Seven Python unit tests
+- PowerShell sample export and configuration validation
+- Reports, test cases, and architecture documentation
+
+### Designed for Microsoft Purview
+
+- Sensitivity labels and publishing approach
+- PHI encryption behavior
+- SharePoint and OneDrive DLP policy
+- Retention and deletion approach
+- Copilot-readiness controls
+
+### Simulated
+
+- The external PHI-sharing investigation
+- Alerts, audit evidence, exposure decisions, and containment actions used in that fictional case
+
+## Important project decisions
+
+- Protect PHI most strongly while keeping the first rollout manageable.
+- Start DLP in simulation before blocking users.
+- Allow a business-justified override only after testing and tuning.
+- Do not treat every technical match as a confirmed data exposure.
+- Require evidence of sharing or access before confirming an incident.
+- Review SharePoint and OneDrive permissions before enabling a Copilot pilot.
+- Clearly separate local evidence, designs, and simulations.
+
+## Honest limitation
+
+I did not have an authorized Microsoft 365 tenant for this project. I therefore did not deploy Purview policies or collect real alerts and audit logs.
+
+Instead, I personally built and tested the parts that could be completed safely on my computer, documented the Purview configurations in detail, and labeled the investigation as fictional. I do not present this project as production Purview experience.
+
+## Explore the technical work
+
+### Security policies
+
+- [Classification system](policies/classification-taxonomy.md)
+- [Sensitivity-label design](policies/sensitivity-label-design.md)
+- [Label publishing plan](policies/label-publishing-plan.md)
+- [Healthcare DLP policy](policies/dlp-policy-design.md)
+- [DLP test cases](policies/dlp-test-matrix.md)
+- [Data lifecycle plan](policies/data-lifecycle-plan.md)
+- [AI and Copilot governance plan](policies/ai-data-governance-plan.md)
+
+### Automation and investigation
+
+- [Automation guide](automation/README.md)
+- [Validated automation results](automation/validation-results.md)
+- [Investigation playbook](investigations/investigation-playbook.md)
+- [Fictional external-sharing case](investigations/external-phi-sharing-case.md)
+
+### Business reporting
 
 - [Executive summary](reporting/executive-summary.md)
 - [Technical findings](reporting/technical-findings.md)
-- [Prioritized remediation playbook](reporting/remediation-playbook.md)
+- [Remediation playbook](reporting/remediation-playbook.md)
 - [30/60/90-day roadmap](reporting/30-60-90-day-roadmap.md)
-- [Illustrative NIST/ISO mapping](compliance/nist-iso-control-mapping.md)
-- [Decision log](DECISION_LOG.md)
+- [NIST and ISO mapping](compliance/nist-iso-control-mapping.md)
 
-The executive priority is to review access to patient-data repositories before a Copilot pilot. This is a design risk requiring validation—not a claim that inappropriate access was observed.
-
-## Key decisions
-
-- Use a free hybrid implementation because no authorized tenant was available.
-- Prioritize PHI classification and SharePoint/OneDrive DLP.
-- Treat confirmed identity + MRN + clinical context as High in the local detector; route incomplete combinations to review.
-- Encrypt Highly Confidential – PHI only during the first label pilot.
-- Start DLP in simulation and progress to block with justified override after tuning.
-- Require evidence of actual access or sharing before confirming exposure.
-- Retain raw AI-evaluation data for 90 days subject to organizational approval.
-- Require owner-approved permission reviews before Copilot pilot access.
-- Use evidence-level NIST/ISO mapping without compliance or maturity claims.
-
-## Honest limitations
-
-- No authorized Microsoft 365 tenant, Purview portal, E5 sandbox, or Copilot environment was used.
-- No label, DLP policy, retention control, alert, audit search, eDiscovery case, Insider Risk case, Communication Compliance case, or DSPM assessment was deployed or observed.
-- Local regex and context logic are not a replacement for Microsoft Purview sensitive information types, trainable classifiers, or production telemetry.
-- The forensic case is fictional, and the NIST/ISO crosswalk is illustrative.
-- Production implementation requires licensing, least-privileged roles, change control, legal/privacy/records approval, pilot testing, and operating-effectiveness evidence.
-
-See [honest limitations](interview/honest-limitations.md) for the complete interview response.
-
-## What I learned
-
-- Detection is not the same as classification, risk, exposure, or incident severity.
-- Boundary and negative-control cases are essential for precision and operational usability.
-- Creating a label does not make it available; publishing and scoped testing are separate steps.
-- Container labels control container behavior but do not automatically label every stored file.
-- DLP enforcement should be evidence-gated and tuned before broad blocking.
-- Copilot readiness is fundamentally an identity, permissions, data-governance, and monitoring problem.
-- Execution evidence is stronger than untested code: local testing found and corrected Python loading and Windows PowerShell 5.1 compatibility defects.
-
-## Future improvements
-
-With an authorized tenant, the next steps are a five-user pilot, repository-owner access reviews, Purview label publication, DLP simulation, sanitized evidence collection, audit/eDiscovery validation, and controlled Copilot readiness testing. Production findings would replace—not be blended with—the simulated artifacts.
-
-## Interview preparation
+### Interview preparation
 
 - [30-second, 2-minute, 5-minute, and 10-minute walkthroughs](interview/project-walkthrough.md)
-- [Technical interview questions and answers](interview/technical-questions.md)
-- [Honest limitations and production-experience positioning](interview/honest-limitations.md)
+- [Technical interview questions](interview/technical-questions.md)
+- [Honest experience and limitation statement](interview/honest-limitations.md)
 
-## Authoritative references
+## My interview summary
 
-- [Official SC-401 lab instructions](https://microsoftlearning.github.io/SC-401T00-Information-Security-Administrator/)
+> I already had experience with Microsoft 365, identity and access management, secure healthcare and AI-data workflows, automation, and reporting. I built this lab to connect those skills to Microsoft Purview. I personally tested the local automation, designed the Purview controls, documented a realistic investigation process, and clearly identified what would still need to be validated in an authorized Microsoft 365 tenant.
+
+## References
+
+- [Official Microsoft SC-401 lab instructions](https://microsoftlearning.github.io/SC-401T00-Information-Security-Administrator/)
 - [Microsoft Purview documentation](https://learn.microsoft.com/en-us/purview/)
-- [Learn about sensitivity labels](https://learn.microsoft.com/en-us/purview/sensitivity-labels)
-- [Learn about data loss prevention](https://learn.microsoft.com/en-us/purview/dlp-learn-about-dlp)
-- [Learn about retention](https://learn.microsoft.com/en-us/purview/retention)
-- [Microsoft Purview eDiscovery](https://learn.microsoft.com/en-us/purview/ediscovery/)
-- [Data Security Posture Management for AI](https://learn.microsoft.com/en-us/purview/ai-microsoft-purview)
-- [Data, privacy, and security for Microsoft 365 Copilot](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy)
+- [Microsoft Purview sensitivity labels](https://learn.microsoft.com/en-us/purview/sensitivity-labels)
+- [Microsoft Purview data loss prevention](https://learn.microsoft.com/en-us/purview/dlp-learn-about-dlp)
+- [Microsoft Purview DSPM for AI](https://learn.microsoft.com/en-us/purview/ai-microsoft-purview)
 
-## Repository status
+## Project status
 
-Phases 0 through 12 are complete. See [STATUS.md](STATUS.md) for the evidence and capability boundaries.
+All 12 project phases are complete. See [STATUS.md](STATUS.md) and [DECISION_LOG.md](DECISION_LOG.md) for the detailed record.
