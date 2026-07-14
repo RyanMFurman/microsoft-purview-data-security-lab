@@ -87,3 +87,14 @@
 - **Operational risk / limitation:** Pilot findings might not represent every department or application.
 - **Mitigation:** Document gaps and expand by business unit only after success criteria are met.
 - **Interview takeaway:** I tested policy administration and end-user behavior before proposing broad publication.
+
+## DEC-009 — Use block with business-justified override during initial DLP enforcement
+
+- **Decision:** Use block with business-justified override for the first enforced pilot stage.
+- **Options considered:** D1 block with business-justified override; D2 block without override.
+- **Selected option:** D1 — Block with business-justified override.
+- **Reason:** The initial rollout needs evidence about false positives and legitimate workflows while still interrupting risky external sharing.
+- **Security benefit:** Users must stop and justify the action, and high-confidence attempts remain visible for analyst review.
+- **Operational risk / limitation:** Users might misuse overrides or normalize warning bypass.
+- **Mitigation:** Alert on each high-confidence override, review justification, track repeated behavior, prohibit broad domain exceptions, and move proven scenarios to no-override blocking.
+- **Interview takeaway:** I used progressive enforcement to balance PHI protection, business continuity, and evidence-driven tuning.
