@@ -10,7 +10,8 @@
 - Phase 5 — Data Loss Prevention: **Complete (2026-07-14)**
 - Phase 6 — Data discovery and forensic investigation: **Complete (2026-07-14)**
 - Phase 7 — PowerShell and Python automation: **Complete (2026-07-14)**
-- Phase 8 — Data lifecycle management: **Not started**
+- Phase 8 — Data lifecycle management: **Complete (2026-07-14)**
+- Phase 9 — DSPM for AI and Copilot readiness: **Not started**
 - Tenant changes: **None**
 - Connections to Microsoft cloud services: **None**
 - Evidence model: Free hybrid lab
@@ -79,6 +80,9 @@
 - [x] Phase 7 detector-threshold decision recorded
 - [x] Phase 7 knowledge check completed
 - [x] User confirmed Phase 7 with `done`
+- [x] Phase 8 AI-evaluation retention decision recorded
+- [x] Phase 8 knowledge check completed
+- [x] User confirmed Phase 8 with `done`
 
 ## Timeboxed delivery priority
 

@@ -120,3 +120,14 @@
 - **Operational risk / limitation:** Genuine patient records with incomplete fields might not receive automated High.
 - **Mitigation:** Route partial combinations to Review, retain evidence, test false negatives, and allow contextual human classification.
 - **Interview takeaway:** I encoded a conservative, explainable threshold and tested boundary behavior instead of treating every pattern match as confirmed PHI.
+
+## DEC-012 — Retain raw patient-linked AI evaluation data for 90 days
+
+- **Decision:** Retain raw or patient-linked AI transcription-evaluation data for 90 days after evaluation completion.
+- **Options considered:** R1 90 days; R2 one year; R3 project closure plus owner-defined period.
+- **Selected option:** R1 — 90 days.
+- **Reason:** The shorter period supports data minimization while leaving a defined window for validation and correction.
+- **Security benefit:** Reduces the volume of patient-linked evaluation data available through compromise, oversharing, or unintended AI reuse.
+- **Operational risk / limitation:** Less time is available for retrospective analysis.
+- **Mitigation:** Preserve approved de-identified aggregate metrics and methodology longer; require documented exceptions or holds for raw-data extensions.
+- **Interview takeaway:** I tied retention to purpose and minimized raw AI evaluation data instead of retaining it indefinitely.
