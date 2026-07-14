@@ -100,6 +100,7 @@
 - [x] Phase 12 knowledge check completed through coached model answers
 - [x] User confirmed Phase 12 with `done`
 - [x] Final local validation passed: 14 cases, 7 tests, 12 configuration checks
+- [x] Public GitHub main branch, README, interview link, Mermaid source, and four Phase 7 image assets verified after publication
 
 ## Timeboxed delivery priority
 

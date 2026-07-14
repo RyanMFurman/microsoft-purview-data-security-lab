@@ -53,7 +53,7 @@ The screenshots use the neutral `PS PURVIEW-LAB>` prompt and contain no tenant i
 |---|---|---|---|
 | Synthetic case coverage and safety | CSVs, guide, validation commands | Six sanitized screenshots | Complete |
 | Classification and Purview policy designs | Taxonomy, label, publishing, DLP, lifecycle, AI plans | GitHub-rendered Markdown is sufficient | Complete as design; no tenant screenshot expected |
-| Architecture | Markdown overview and Mermaid source | GitHub README Mermaid rendering | Verify after final push |
+| Architecture | Markdown overview and Mermaid source | Public README source contains the Mermaid block | Published source verified; optional visual capture |
 | Python analysis | Source, tests, recorded results | Clean analysis and 7-test terminal captures | Complete |
 | PowerShell sample export and validation | Source, sanitized sample, recorded results | Clean sample-export and 12/12 validation captures | Complete |
 | Investigation | Playbook and fictional case | Markdown is explicitly simulated | Complete as simulation; optional rendered capture |
@@ -126,12 +126,12 @@ powershell -NoProfile -ExecutionPolicy Bypass `
 
 Expected result: `Pass: 12`, `Fail: 0`.
 
-### Capture E — GitHub final rendering
+### Optional Capture E — GitHub final rendering
 
 **Evidence label:** PORTFOLIO PRESENTATION (derived from mixed, labeled evidence)
 **Filename:** `phase-12-github-readme.png`
 
-After the final push, open the repository homepage and capture the title, evidence boundary, demonstrated-results table, and rendered architecture. This proves publication and presentation only; it does not prove tenant deployment.
+The public repository page, raw README, interview link, Mermaid source, and four Phase 7 image assets returned HTTP 200 after publication. An automated visual browser inspection was unavailable, so no claim is made that Mermaid rendering was visually inspected. Optionally open the repository homepage and capture the title, evidence boundary, demonstrated-results table, and rendered architecture. This proves publication and presentation only; it does not prove tenant deployment.
 
 ## Redaction checklist for every capture
 
