@@ -65,3 +65,25 @@
 - **Operational risk / limitation:** Administrative records may receive higher-friction handling.
 - **Mitigation:** Require contextual confirmation so MRN-shaped campaign, ticket, training, and example codes are not automatically treated as patient records.
 - **Interview takeaway:** Detector confidence can remain “review” while the final, context-informed business classification becomes Highly Confidential – PHI.
+
+## DEC-007 — Encrypt Highly Confidential – PHI only in the initial design
+
+- **Decision:** Limit initial label encryption to Highly Confidential – PHI.
+- **Options considered:** Encrypt PHI only; encrypt Confidential and PHI; defer encryption.
+- **Selected option:** E1 — Encrypt Highly Confidential – PHI only.
+- **Reason:** Patient-linked data warrants persistent protection, while broader encryption would add collaboration and support complexity before the design is tested.
+- **Security benefit:** Centrally assigned usage rights restrict PHI-labeled content to approved users or groups even after a file leaves its repository.
+- **Operational risk / limitation:** Encryption can affect coauthoring, offline access, application compatibility, recovery, and authorized external workflows.
+- **Mitigation:** Pilot with synthetic content, centrally controlled groups, documented recovery ownership, and explicit access tests.
+- **Interview takeaway:** I applied the highest-friction control to the highest-risk class first and separated content usage rights from administrative RBAC roles.
+
+## DEC-008 — Publish labels to a role-diverse pilot group
+
+- **Decision:** Publish the initial label policy to a small group representing administration, investigation, ownership, and standard-user workflows.
+- **Options considered:** Role-diverse pilot; administrators and analysts only; all users.
+- **Selected option:** P1 — Role-diverse pilot group.
+- **Reason:** A mixed pilot produces more representative usability, access, downgrade, and support evidence without tenant-wide impact.
+- **Security benefit:** Limits blast radius while testing both privileged and ordinary user behavior.
+- **Operational risk / limitation:** Pilot findings might not represent every department or application.
+- **Mitigation:** Document gaps and expand by business unit only after success criteria are met.
+- **Interview takeaway:** I tested policy administration and end-user behavior before proposing broad publication.

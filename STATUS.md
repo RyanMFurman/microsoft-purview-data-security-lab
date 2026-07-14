@@ -6,7 +6,8 @@
 - Phase 1 — Repository and business architecture: **Complete (2026-07-14)**
 - Phase 2 — Synthetic test data: **Complete (2026-07-14)**
 - Phase 3 — Classification taxonomy: **Complete (2026-07-14)**
-- Phase 4 — Sensitivity labels and publishing: **Not started**
+- Phase 4 — Sensitivity labels and publishing: **Complete (2026-07-14)**
+- Phase 5 — Data Loss Prevention: **Not started**
 - Tenant changes: **None**
 - Connections to Microsoft cloud services: **None**
 - Evidence model: Free hybrid lab
@@ -58,3 +59,14 @@
 - [x] Phase 3 classification decision recorded
 - [x] Phase 3 knowledge check completed
 - [x] User confirmed Phase 3 with `done`
+- [x] Phase 4 encryption decision recorded
+- [x] Phase 4 publishing-scope decision recorded
+- [x] Phase 4 knowledge check completed
+- [x] User confirmed Phase 4 with `done`
+
+## Timeboxed delivery priority
+
+- Highest-return substantive phases: 2–7, 9–10, and 12.
+- Phase 8 lifecycle: concise practical table and decision summary.
+- Phase 11 NIST/ISO: concise illustrative appendix only.
+- Avoid duplicate prose; prioritize working automation, policy logic, test cases, investigation reasoning, and interview fluency.
