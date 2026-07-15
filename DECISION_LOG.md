@@ -71,7 +71,7 @@
 - **Decision:** Limit initial label encryption to Highly Confidential – PHI.
 - **Options considered:** Encrypt PHI only; encrypt Confidential and PHI; defer encryption.
 - **Selected option:** E1 — Encrypt Highly Confidential – PHI only.
-- **Reason:** Patient-linked data warrants persistent protection, while broader encryption would add collaboration and support complexity before the design is tested.
+- **Reason:** Patient-linked data warrants persistent protection, while broader encryption would add collaboration, coauthoring, search/indexing, recovery, and support complexity before the design is tested. E1 limits that friction to the highest-risk content and requires tenant validation rather than assuming every encrypted file remains searchable.
 - **Security benefit:** Centrally assigned usage rights restrict PHI-labeled content to approved users or groups even after a file leaves its repository.
 - **Operational risk / limitation:** Encryption can affect coauthoring, offline access, application compatibility, recovery, and authorized external workflows.
 - **Mitigation:** Pilot with synthetic content, centrally controlled groups, documented recovery ownership, and explicit access tests.

@@ -132,6 +132,7 @@ The repository uses three visible evidence labels so a reviewer always knows wha
 ## Important project decisions
 
 - Protect PHI most strongly while keeping the first rollout manageable.
+- Use E1 encryption for PHI only, reducing collaboration and search/indexing risk for lower-sensitivity files while the encrypted PHI experience is tested.
 - Start DLP in simulation before blocking users.
 - Allow a business-justified override only after testing and tuning.
 - Do not treat every technical match as a confirmed data exposure.

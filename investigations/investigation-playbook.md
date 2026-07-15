@@ -85,14 +85,16 @@ Exact activity names and availability must be verified in the authorized tenant'
 
 Search for the known synthetic filename, MRN pattern, custodian, and date range. A production search requires legal/privacy authorization, appropriate roles, documented scope, and evidence-handling controls.
 
-### Illustrative KQL-style content query
+### Illustrative Microsoft Purview eDiscovery KQL content query
 
 ```text
 (filename:"synthetic-patient-data.csv" OR "MRN-HCA-100001")
-AND (date>=2026-07-14 AND date<=2026-07-15)
+AND (lastmodifiedtime>=2026-07-14 AND lastmodifiedtime<=2026-07-15)
 ```
 
-This is a search-design example, not an executed query or guaranteed syntax for every Microsoft search surface.
+This syntax targets document content and indexed SharePoint/OneDrive properties in a Microsoft Purview eDiscovery search. `FileName` scopes by file name, the quoted MRN is a full-text keyword, and `LastModifiedTime` constrains when the item was changed. It is not a Microsoft Sentinel query or Unified Audit Log query. This example was not executed; a production analyst must confirm the workload, indexed properties, date boundaries, permissions, and returned sample before relying on it.
+
+Source: [Keyword queries and search conditions for eDiscovery](https://learn.microsoft.com/en-us/purview/ediscovery-keyword-queries-and-search-conditions)
 
 ## 6. Evidence preservation
 
@@ -191,4 +193,3 @@ Use “five whys” or a causal tree, but do not end at “user error” when pr
 - [SharePoint and OneDrive sharing auditing](https://learn.microsoft.com/en-us/purview/audit-log-sharing)
 - [Activity explorer](https://learn.microsoft.com/en-us/purview/data-classification-activity-explorer)
 - [Official SC-401 hosted instructions](https://microsoftlearning.github.io/SC-401T00-Information-Security-Administrator/)
-

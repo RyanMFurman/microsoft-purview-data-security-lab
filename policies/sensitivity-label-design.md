@@ -78,7 +78,15 @@ Container labels for Teams, Microsoft 365 groups, and SharePoint sites are an ex
 - **E2 — Encrypt Confidential and Highly Confidential – PHI:** Broader protection but greater collaboration, search, coauthoring, and external-sharing complexity.
 - **E3 — No encryption in the initial design:** Simplest operation but weakens persistent protection if a file leaves its repository.
 
-**Decision outcome:** E1 selected. Encrypt Highly Confidential – PHI only in the initial design. Encryption persists with a labeled file after download, but exact collaboration behavior and application compatibility require tenant validation.
+**Decision outcome:** E1 selected. Encrypt Highly Confidential – PHI only in the initial design.
+
+### Why E1 balances protection and productivity
+
+E1 gives confirmed patient-linked information persistent protection if a labeled file is downloaded or leaves its original repository. It avoids immediately encrypting every Confidential business, employee, financial, or security document, which reduces initial disruption to collaboration, coauthoring, external workflows, mobile access, support, and recovery.
+
+The design uses centrally assigned permissions for an approved PHI group rather than letting users create arbitrary permissions. When sensitivity-label support for SharePoint and OneDrive is correctly enabled, Microsoft services can process supported encrypted files for capabilities such as search, eDiscovery, DLP, and coauthoring. Exact behavior depends on the encryption configuration, file type, client, service settings, and when the file was uploaded or edited.
+
+E1 therefore limits the number of encrypted files that could experience compatibility or indexing problems; it does **not** guarantee search indexability. The pilot must validate search results, eDiscovery discovery, DLP inspection, coauthoring, mobile access, offline access, and recovery with synthetic files before expansion.
 
 ## Labeling methods
 
