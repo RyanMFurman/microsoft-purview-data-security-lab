@@ -38,6 +38,9 @@ Provides secondary employee PII, financial, internal-only, false-positive, and p
 | Email and phone | Identity/contact context | Raises confidence in combination | Shared aliases are not necessarily personal data |
 | Payment test number | Exercises financial pattern detection | Sensitive match | Test and example values can generate intended false positives |
 | Public marketing text | Negative control | Must remain Public and unblocked | Broad keyword rules might incorrectly flag healthcare words |
+| Sharing state | Separates content sensitivity from the modeled sharing event | External High cases can trigger a modeled DLP action; internal cases do not | A global override can distort individual scenarios if used as the default |
+
+Each CSV row contains an explicit `sharing_state` of `internal` or `external`. The analyzer uses that scenario value by default. Its command-line sharing option is reserved for deliberate what-if overrides across all rows.
 
 ## Purview interpretation boundary
 

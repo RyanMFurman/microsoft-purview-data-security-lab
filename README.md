@@ -1,8 +1,7 @@
 # Microsoft Purview Healthcare Data Security & AI Governance Lab
 
 [![Microsoft Purview](https://img.shields.io/badge/Microsoft-Purview-5C2D91?logo=microsoft&logoColor=white)](https://learn.microsoft.com/en-us/purview/)
-[![Python Tests](https://img.shields.io/badge/Python%20tests-7%2F7%20passing-2E8B57?logo=python&logoColor=white)](automation/validation-results.md)
-[![PowerShell Checks](https://img.shields.io/badge/PowerShell%20checks-12%2F12%20passing-2671BE?logo=powershell&logoColor=white)](automation/validation-results.md)
+[![Validation](https://github.com/RyanMFurman/microsoft-purview-data-security-lab/actions/workflows/validate.yml/badge.svg)](https://github.com/RyanMFurman/microsoft-purview-data-security-lab/actions/workflows/validate.yml)
 [![Data](https://img.shields.io/badge/data-100%25%20synthetic-blue)](data/test-data-guide.md)
 [![Tenant Deployment](https://img.shields.io/badge/live%20tenant-not%20used-lightgrey)](#honest-limitation)
 
@@ -37,6 +36,7 @@ A fictional company stores patient-support, employee, financial, and business in
 - A fictional investigation of a possible external PHI-sharing event
 - Python automation that reviews synthetic records and suggests risk levels
 - PowerShell automation that checks a sanitized sample Purview configuration
+- A GitHub Actions workflow that independently reruns the Python and PowerShell validation
 - A data-retention plan
 - A Copilot-readiness and AI data-governance plan
 - An executive summary, remediation plan, and 30/60/90-day roadmap
@@ -58,6 +58,7 @@ A fictional company stores patient-support, employee, financial, and business in
 | Python tests passed | 7 of 7 |
 | PowerShell configuration checks passed | 12 of 12 |
 | Failed configuration checks | 0 |
+| Intentionally invalid controls detected | 4 of 4; exit code 2 |
 
 These results prove that my local code and test logic worked. They do not prove that Microsoft Purview policies were deployed in a live company environment.
 
@@ -71,6 +72,8 @@ The test data includes:
 - A public-data example that should not trigger protection
 
 This matters because a useful security system must detect real risk without blocking ordinary work unnecessarily.
+
+Each scenario now carries its own internal or external sharing state. For example, `PHI-TP-003` remains Highly Confidential – PHI but is allowed by the modeled external-sharing rule because its scenario is internal. The command-line sharing option is used only for deliberate what-if overrides.
 
 | Test-case coverage | Safety validation |
 |---|---|
@@ -92,11 +95,11 @@ The important Copilot lesson is simple: Copilot can use information that a perso
 
 ## Local automation evidence
 
-| Python analysis | PowerShell validation |
+| PowerShell sample export | PowerShell validation |
 |---|---|
-| ![Python analysis of 14 synthetic cases](screenshots/phase-7-python-analysis.png) | ![PowerShell validation showing 12 passes and 0 failures](screenshots/phase-7-powershell-validation.png) |
+| ![PowerShell sanitized sample export](screenshots/phase-7-powershell-sample-export.png) | ![PowerShell validation showing 12 passes and 0 failures](screenshots/phase-7-powershell-validation.png) |
 
-The Python tool is a demonstration detector. It is not a replacement for Microsoft Purview's classification technology.
+GitHub Actions reruns the scenario-level Python analyzer, all seven unit tests, the valid PowerShell sample, and the intentionally invalid PowerShell sample on every push and pull request. The Python tool is a demonstration detector; it is not a replacement for Microsoft Purview's classification technology.
 
 ## What was implemented and what was designed
 
@@ -199,4 +202,4 @@ These images are deliberately small record excerpts. They demonstrate test-case 
 
 ## Project status
 
-All 12 project phases are complete. See [STATUS.md](STATUS.md) and [DECISION_LOG.md](DECISION_LOG.md) for the detailed record.
+All 13 project phases, numbered 0–12, are complete. See [STATUS.md](STATUS.md) and [DECISION_LOG.md](DECISION_LOG.md) for the detailed record.

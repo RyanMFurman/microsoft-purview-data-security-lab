@@ -1,8 +1,7 @@
-test_case_id,case_type,employee_name,employee_id,department,email,ssn_style,payment_card_test_number,bank_account_style,content_summary,expected_classification,expected_sensitive_result
-EMP-TP-001,employee_pii,Taylor Quinn,EMP-20001,People Operations,taylor.quinn@example.test,000-98-7654,,,"Synthetic onboarding record containing employee identity fields.",Confidential,match
-EMP-TP-002,financial_test,Reese Carter,EMP-20002,Finance,reese.carter@example.test,,4111111111111111,000123456789,"Payment-control test row using a published industry test card number and fictional account-style value.",Confidential,match
-EMP-BD-001,boundary_case,,EMP-20003,Engineering,engineering@example.test,,,,"Shared team alias and employee identifier without personal data.",Internal,review
-EMP-FP-001,false_positive_candidate,,,,,,,,"Project tracking code EMP-20001 appears in a public release checklist but identifies no person.",Public,review
-PUB-TN-001,public_marketing,,,,media@example.test,,,,"Contoso Care Assist announces a fictional responsible-AI webinar for the public.",Public,no_match
-PUB-TN-002,public_marketing,,,,press@example.test,,,,"Approved public product description with no patient, employee, or financial information.",Public,no_match
-
+test_case_id,case_type,sharing_state,employee_name,employee_id,department,email,ssn_style,payment_card_test_number,bank_account_style,content_summary,expected_classification,expected_sensitive_result
+EMP-TP-001,employee_pii,internal,Taylor Quinn,EMP-20001,People Operations,taylor.quinn@example.test,000-98-7654,,,"Synthetic onboarding record containing employee identity fields.",Confidential,match
+EMP-TP-002,financial_test,internal,Reese Carter,EMP-20002,Finance,reese.carter@example.test,,4111111111111111,000123456789,"Payment-control test row using a published industry test card number and fictional account-style value.",Confidential,match
+EMP-BD-001,boundary_case,internal,,EMP-20003,Engineering,engineering@example.test,,,,"Shared team alias and employee identifier without personal data.",Internal,review
+EMP-FP-001,false_positive_candidate,internal,,,,,,,,"Project tracking code EMP-20001 appears in a public release checklist but identifies no person.",Public,review
+PUB-TN-001,public_marketing,external,,,,media@example.test,,,,"Contoso Care Assist announces a fictional responsible-AI webinar for the public.",Public,no_match
+PUB-TN-002,public_marketing,external,,,,press@example.test,,,,"Approved public product description with no patient, employee, or financial information.",Public,no_match

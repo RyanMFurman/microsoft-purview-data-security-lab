@@ -1,10 +1,9 @@
-test_case_id,case_type,patient_name,date_of_birth,medical_record_number,ssn_style,email,phone,diagnosis,medication,account_balance,free_text,expected_local_risk,expected_phi_result
-PHI-TP-001,strong_positive,Avery Rowan,1984-02-11,MRN-HCA-100001,000-12-3456,avery.rowan@example.test,202-555-0101,Type 2 diabetes,Metformin,245.75,"Patient support follow-up for glucose monitoring and medication adherence.",high,match
-PHI-TP-002,strong_positive,Jordan Ellis,1975-09-23,MRN-HCA-100002,666-45-6789,jordan.ellis@example.test,202-555-0102,Hypertension,Lisinopril,89.00,"Care coordinator confirmed the synthetic treatment plan.",high,match
-PHI-TP-003,strong_positive,Morgan Vale,1992-06-30,MRN-HCA-100003,900-34-5678,morgan.vale@example.test,202-555-0103,Asthma,Albuterol,0.00,"Synthetic transcription evaluation includes symptoms and a patient identifier.",high,match
-PHI-BD-001,boundary_case,Casey North,1988-12-04,MRN-HCA-100004,,casey.north@example.test,202-555-0104,,,0.00,"Scheduling record contains identity and an MRN but no diagnosis.",medium,review
-PHI-BD-002,boundary_case,,,MRN-HCA-100005,,,,Migraine,Sumatriptan,,"Clinical terms and an MRN appear without a patient name.",medium,review
-PHI-FP-001,false_positive_candidate,,,,,,,,,100001.00,"Marketing roadmap number MRN-HCA-100001 is cited as a fictional campaign code, not a medical record.",low,review
-PHI-TN-001,true_negative,,,,,media@example.test,,,,0.00,"Public webinar: improving customer support with responsible AI.",none,no_match
-PHI-TN-002,true_negative,,,,,,,,,0.00,"Office supply inventory: keyboards, monitors, and headsets.",none,no_match
-
+test_case_id,case_type,sharing_state,patient_name,date_of_birth,medical_record_number,ssn_style,email,phone,diagnosis,medication,account_balance,free_text,expected_local_risk,expected_phi_result
+PHI-TP-001,strong_positive,external,Avery Rowan,1984-02-11,MRN-HCA-100001,000-12-3456,avery.rowan@example.test,202-555-0101,Type 2 diabetes,Metformin,245.75,"Patient support follow-up for glucose monitoring and medication adherence.",high,match
+PHI-TP-002,strong_positive,external,Jordan Ellis,1975-09-23,MRN-HCA-100002,666-45-6789,jordan.ellis@example.test,202-555-0102,Hypertension,Lisinopril,89.00,"Care coordinator confirmed the synthetic treatment plan.",high,match
+PHI-TP-003,strong_positive,internal,Morgan Vale,1992-06-30,MRN-HCA-100003,900-34-5678,morgan.vale@example.test,202-555-0103,Asthma,Albuterol,0.00,"Synthetic transcription evaluation includes symptoms and a patient identifier.",high,match
+PHI-BD-001,boundary_case,external,Casey North,1988-12-04,MRN-HCA-100004,,casey.north@example.test,202-555-0104,,,0.00,"Scheduling record contains identity and an MRN but no diagnosis.",medium,review
+PHI-BD-002,boundary_case,external,,,MRN-HCA-100005,,,,Migraine,Sumatriptan,,"Clinical terms and an MRN appear without a patient name.",medium,review
+PHI-FP-001,false_positive_candidate,external,,,,,,,,,100001.00,"Marketing roadmap number MRN-HCA-100001 is cited as a fictional campaign code, not a medical record.",low,review
+PHI-TN-001,true_negative,external,,,,media@example.test,,,,0.00,"Public webinar: improving customer support with responsible AI.",none,no_match
+PHI-TN-002,true_negative,internal,,,,,,,,,0.00,"Office supply inventory: keyboards, monitors, and headsets.",none,no_match

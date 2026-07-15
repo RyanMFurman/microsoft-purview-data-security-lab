@@ -2,7 +2,7 @@
 
 **Evidence label: DESIGNED FOR PURVIEW**
 
-No row represents a real Purview match or alert. Expected outcomes are specifications that will drive local Phase 7 simulation logic and a future authorized tenant test.
+No row represents a real Purview match or alert. The local analyzer validates the project's core detection subset. Advanced sharing, exception, repeated-behavior, human-escalation, and unscannable-content scenarios remain designed test cases for future authorized tenant validation.
 
 | Test | Fixture | Sharing state | Expected rule | Simulation result | Enforcement target | Analyst disposition |
 |---|---|---|---|---|---|---|
@@ -32,10 +32,21 @@ No row represents a real Purview match or alert. Expected outcomes are specifica
 - Unscannable content
 - Simulation, warning, override, and blocking outcomes
 
-## Acceptance criteria
+## Local automation coverage
 
-- Every expected high-confidence fixture is detected by the later local simulator.
+The Python analyzer directly validates the core fixture and sharing-state behavior represented by DLP-001, DLP-002, DLP-003, DLP-005, DLP-006, DLP-007, and DLP-008. DLP-004 requires a human contextual decision after the analyzer returns Review. DLP-009 through DLP-012 are design-only cases because the local CSV detector does not model an exception registry, anonymous-link telemetry, behavior history, or file-scanning status.
+
+## Local analyzer acceptance criteria
+
+- Every core strong-positive fixture is classified High.
+- External strong-positive scenarios receive the modeled block-with-justified-override action.
+- Internal `PHI-TP-003` remains High sensitivity but is allowed by the external-sharing rule.
 - `PHI-FP-001` and public negatives are never automatically blocked as confirmed PHI.
 - External sharing changes action; sensitivity alone does not prove exfiltration.
-- Overrides always require a business justification and review.
+
+## Future Purview pilot acceptance criteria
+
+- Approved exceptions require a business justification, owner, scope, and expiry.
+- Anonymous links and repeated behavior trigger the designed escalation path.
 - Unscannable content receives an explicit handling decision.
+- Human-reviewed contextual escalation is documented separately from automated detection.

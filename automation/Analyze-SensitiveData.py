@@ -42,6 +42,7 @@ CLINICAL_TERMS = {
 class Finding:
     test_case_id: str
     case_type: str
+    sharing_state: str
     indicators: tuple[str, ...]
     risk: str
     classification: str
@@ -63,7 +64,13 @@ def _has_identity(row: dict[str, str]) -> bool:
     return any((row.get(field) or "").strip() for field in identity_fields)
 
 
-def analyze_row(row: dict[str, str], sharing_state: str) -> Finding:
+def analyze_row(row: dict[str, str], sharing_state_override: str | None = None) -> Finding:
+    sharing_state = sharing_state_override or (row.get("sharing_state") or "").strip().lower()
+    if sharing_state not in {"internal", "external"}:
+        raise ValueError(
+            f"Invalid sharing_state for {row.get('test_case_id', 'UNKNOWN')}: "
+            f"{sharing_state or 'missing'}"
+        )
     text = _combined_text(row)
     lowered = text.lower()
     indicators: list[str] = []
@@ -124,6 +131,7 @@ def analyze_row(row: dict[str, str], sharing_state: str) -> Finding:
     return Finding(
         test_case_id=row.get("test_case_id", "UNKNOWN"),
         case_type=row.get("case_type", "unknown"),
+        sharing_state=sharing_state,
         indicators=tuple(indicators),
         risk=risk,
         classification=classification,
@@ -150,11 +158,17 @@ def load_rows(paths: Iterable[Path]) -> list[dict[str, str]]:
     return rows
 
 
-def build_report(findings: list[Finding], sharing_state: str) -> dict[str, object]:
+def build_report(
+    findings: list[Finding], sharing_state_override: str | None
+) -> dict[str, object]:
     return {
         "evidence_label": "IMPLEMENTED LOCALLY",
         "engine": "Local demonstration detector; not Microsoft Purview",
-        "sharing_state": sharing_state,
+        "sharing_state_mode": "command-line override" if sharing_state_override else "per scenario",
+        "sharing_state_override": sharing_state_override,
+        "sharing_state_counts": dict(
+            sorted(Counter(item.sharing_state for item in findings).items())
+        ),
         "total_cases": len(findings),
         "risk_counts": dict(sorted(Counter(item.risk for item in findings).items())),
         "action_counts": dict(sorted(Counter(item.dlp_action for item in findings).items())),
@@ -175,18 +189,19 @@ def write_report(report: dict[str, object], output_dir: Path) -> None:
         "",
         "> Demonstration detector only; results are not Microsoft Purview findings.",
         "",
-        f"- Sharing state: `{report['sharing_state']}`",
+        f"- Sharing-state mode: `{report['sharing_state_mode']}`",
+        f"- Sharing-state counts: `{json.dumps(report['sharing_state_counts'], sort_keys=True)}`",
         f"- Total cases: {report['total_cases']}",
         f"- Risk counts: `{json.dumps(report['risk_counts'], sort_keys=True)}`",
         f"- Action counts: `{json.dumps(report['action_counts'], sort_keys=True)}`",
         "",
-        "| Case | Risk | Classification | DLP action | Indicators |",
-        "|---|---|---|---|---|",
+        "| Case | Sharing | Risk | Classification | DLP action | Indicators |",
+        "|---|---|---|---|---|---|",
     ]
     for finding in report["findings"]:  # type: ignore[index]
         indicators = ", ".join(finding["indicators"]) or "none"
         lines.append(
-            f"| {finding['test_case_id']} | {finding['risk']} | "
+            f"| {finding['test_case_id']} | {finding['sharing_state']} | {finding['risk']} | "
             f"{finding['classification']} | {finding['dlp_action']} | {indicators} |"
         )
     markdown_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -208,8 +223,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--sharing-state",
         choices=("internal", "external"),
-        default="external",
-        help="Modeled sharing context used for the local DLP action.",
+        default=None,
+        help="Optional override applied to every row; otherwise each scenario's sharing_state is used.",
     )
     parser.add_argument(
         "--output-dir",
@@ -232,6 +247,8 @@ def main() -> int:
         return 1
 
     print(f"Analyzed {len(findings)} synthetic cases.")
+    print(f"Sharing-state mode: {report['sharing_state_mode']}")
+    print(f"Sharing-state counts: {report['sharing_state_counts']}")
     print(f"Risk counts: {report['risk_counts']}")
     print(f"Action counts: {report['action_counts']}")
     print(f"Reports: {args.output_dir.resolve()}")
@@ -240,4 +257,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

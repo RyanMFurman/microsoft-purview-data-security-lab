@@ -18,17 +18,20 @@ The tools do not reproduce Microsoft Purview classification, prove deployment, o
 Run from the repository root:
 
 ```powershell
-python .\automation\Analyze-SensitiveData.py --sharing-state external
+python .\automation\Analyze-SensitiveData.py
 ```
 
 Expected behavior:
 
 - Loads both synthetic CSV files.
+- Uses each record's `sharing_state` (`internal` or `external`) by default.
 - Detects MRN, synthetic SSN, payment test number, identity, employee, and clinical indicators.
 - Requires MRN + identity + clinical context for automated High.
 - Sends partial MRN combinations to Review.
 - Models D1 block-with-justified-override only for externally shared High cases.
 - Writes sanitized JSON and Markdown reports under `output/python-analysis/`.
+
+Use `--sharing-state internal` or `--sharing-state external` only when deliberately overriding every scenario for a what-if comparison. The override is not the default validation run.
 
 Run the unit tests:
 
@@ -96,6 +99,19 @@ Exit codes:
 
 Reports are written under `output/powershell-validation/`.
 
+### Negative-path validation
+
+The intentionally invalid fixture proves that the validator detects unsafe or incorrect settings rather than only accepting the happy path:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass `
+    -File .\automation\Test-PurviewConfiguration.ps1 `
+    -ConfigurationPath .\automation\samples\purview-configuration.invalid.sample.json
+$LASTEXITCODE
+```
+
+Expected result: failures for disabled PHI encryption, premature DLP enforcement, Exchange added to the initial scope, and a disabled external-sharing condition. The process must return exit code `2`. This fixture is deliberately invalid and must never be treated as a recommended configuration.
+
 Rollback: validation is read-only. Remove generated output and correct the sample/design source through review; never “fix” production configuration automatically with this script.
 
 ## Sanitization rules
@@ -107,4 +123,3 @@ Never export or commit:
 - Tokens, credentials, secrets, or session data
 - Raw file content or matched sensitive values
 - Unredacted SharePoint or OneDrive URLs
-

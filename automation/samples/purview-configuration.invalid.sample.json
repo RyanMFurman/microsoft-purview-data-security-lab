@@ -1,0 +1,31 @@
+{
+  "EvidenceLabel": "INTENTIONALLY INVALID TEST FIXTURE",
+  "Source": "Sanitized negative-test configuration; not exported from a tenant",
+  "Labels": [
+    {"Name": "Public", "Priority": 0, "Scope": ["Files", "Emails"], "Encryption": false, "Enabled": true},
+    {"Name": "Internal", "Priority": 1, "Scope": ["Files", "Emails"], "Encryption": false, "Enabled": true},
+    {"Name": "Confidential", "Priority": 2, "Scope": ["Files", "Emails"], "Encryption": false, "Enabled": true},
+    {"Name": "Highly Confidential \u2013 PHI", "Priority": 3, "Scope": ["Files", "Emails"], "Encryption": false, "Enabled": true}
+  ],
+  "PublishingPolicies": [
+    {
+      "Name": "Purview Healthcare Lab \u2013 Pilot Label Policy",
+      "Enabled": true,
+      "Audience": "Purview-Lab-Pilot-Users",
+      "Labels": ["Public", "Internal", "Confidential", "Highly Confidential \u2013 PHI"],
+      "DefaultLabel": "Internal",
+      "RequireDowngradeJustification": true,
+      "MandatoryLabeling": false
+    }
+  ],
+  "DlpPolicies": [
+    {
+      "Name": "Healthcare Sensitive Data External Sharing Policy",
+      "Enabled": true,
+      "Mode": "Enforce",
+      "Locations": ["SharePoint", "OneDrive", "Exchange"],
+      "Enforcement": "BlockWithoutOverride",
+      "ExternalSharingCondition": false
+    }
+  ]
+}
