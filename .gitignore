@@ -27,3 +27,6 @@ __pycache__/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Private interview preparation (keep local; do not publish)
+interview/

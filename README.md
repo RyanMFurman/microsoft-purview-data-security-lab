@@ -10,7 +10,7 @@
 
 ### Quick links
 
-[Results](#results-i-personally-validated) · [Architecture](#how-the-solution-fits-together) · [Evidence](#local-automation-evidence) · [Security decisions](#important-project-decisions) · [Technical work](#explore-the-technical-work) · [Interview preparation](#interview-preparation)
+[Results](#results-i-personally-validated) · [Architecture](#how-the-solution-fits-together) · [Evidence](#local-automation-evidence) · [Security decisions](#important-project-decisions) · [Technical work](#explore-the-technical-work)
 
 ## What this project is
 
@@ -171,12 +171,6 @@ Instead, I personally built and tested the parts that could be completed safely 
 - [Remediation playbook](reporting/remediation-playbook.md)
 - [30/60/90-day roadmap](reporting/30-60-90-day-roadmap.md)
 - [NIST and ISO mapping](compliance/nist-iso-control-mapping.md)
-
-### Interview preparation
-
-- [30-second, 2-minute, 5-minute, and 10-minute walkthroughs](interview/project-walkthrough.md)
-- [Technical interview questions](interview/technical-questions.md)
-- [Honest experience and limitation statement](interview/honest-limitations.md)
 
 ## More visual evidence
 
